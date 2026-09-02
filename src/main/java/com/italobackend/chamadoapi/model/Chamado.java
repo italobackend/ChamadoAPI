@@ -16,8 +16,8 @@ public class Chamado {
     @Column(nullable = false, length = 256)
     private String descricao;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
     @Enumerated(EnumType.STRING)
@@ -30,20 +30,15 @@ public class Chamado {
     public Chamado() {
     }
 
-    public Chamado(Long id, String descricao, Usuario usuario, TipoChamado tipoChamado, LocalDateTime criadoEm) {
-        this.id = id;
+    public Chamado(String descricao, Usuario usuario, TipoChamado tipoChamado, LocalDateTime criadoEm) {
         this.descricao = descricao;
         this.usuario = usuario;
         this.tipoChamado = tipoChamado;
-        this.criadoEm = criadoEm;
+        this.criadoEm = LocalDateTime.now();
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getDescricao() {
