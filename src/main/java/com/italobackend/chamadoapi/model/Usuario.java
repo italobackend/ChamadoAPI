@@ -4,6 +4,8 @@ import com.italobackend.chamadoapi.enums.TipoUsuario;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -29,15 +31,19 @@ public class Usuario {
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;
 
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Chamado> chamados = new ArrayList<>();
+
     public Usuario() {
     }
 
-    public Usuario(String nome, String login, String senha, TipoUsuario tipoUsuario, LocalDateTime criadoEm) {
+    public Usuario(String nome, String login, String senha, TipoUsuario tipoUsuario, LocalDateTime criadoEm, List<Chamado> chamados) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
         this.criadoEm = criadoEm;
+        this.chamados = chamados;
     }
 
     public Long getId() {
@@ -83,5 +89,13 @@ public class Usuario {
 
     public void setCriadoEm(LocalDateTime criadoEm) {
         this.criadoEm = criadoEm;
+    }
+
+    public List<Chamado> getChamados() {
+        return chamados;
+    }
+
+    public void setChamados(List<Chamado> chamados) {
+        this.chamados = chamados;
     }
 }
