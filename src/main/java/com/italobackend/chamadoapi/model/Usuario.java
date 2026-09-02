@@ -42,7 +42,7 @@ public class Usuario {
         this.login = login;
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
-        this.criadoEm = criadoEm;
+        this.criadoEm = LocalDateTime.now();
         this.chamados = chamados;
     }
 
