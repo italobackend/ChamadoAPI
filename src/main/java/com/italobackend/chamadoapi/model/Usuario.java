@@ -1,5 +1,6 @@
 package com.italobackend.chamadoapi.model;
 
+import com.italobackend.chamadoapi.enums.StatusUsuario;
 import com.italobackend.chamadoapi.enums.TipoUsuario;
 import jakarta.persistence.*;
 
@@ -31,19 +32,24 @@ public class Usuario {
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_usuario", nullable = false, length = 50)
+    private StatusUsuario status;
+
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Chamado> chamados = new ArrayList<>();
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String login, String senha, TipoUsuario tipoUsuario, LocalDateTime criadoEm, List<Chamado> chamados) {
+    public Usuario(String nome, String login, String senha, TipoUsuario tipoUsuario, LocalDateTime criadoEm, List<Chamado> chamados, StatusUsuario status) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
         this.criadoEm = LocalDateTime.now();
         this.chamados = chamados;
+        this.status = StatusUsuario.ATIVO;
     }
 
     public Long getId() {
@@ -97,5 +103,9 @@ public class Usuario {
 
     public void setChamados(List<Chamado> chamados) {
         this.chamados = chamados;
+    }
+
+    public StatusUsuario getStatus() {
+        return status;
     }
 }
