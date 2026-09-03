@@ -1,0 +1,7 @@
+package com.italobackend.chamadoapi.exceptions;
+
+public class IdNaoEncontradoException extends RuntimeException {
+    public IdNaoEncontradoException(String message) {
+        super(message);
+    }
+}
