@@ -56,7 +56,6 @@ public class Usuario {
         return id;
     }
 
-
     public String getNome() {
         return nome;
     }
