@@ -47,11 +47,11 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-    public Usuario(String nome, String login, String senha, TipoUsuario tipoUsuario, LocalDateTime criadoEm, List<Chamado> chamados, StatusUsuario status) {
+    public Usuario(String nome, String login, String senha) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
-        this.tipoUsuario = tipoUsuario;
+        this.tipoUsuario = TipoUsuario.COMUM;
         this.criadoEm = LocalDateTime.now();
         this.chamados = chamados;
         this.status = StatusUsuario.ATIVO;
@@ -145,6 +145,6 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return status == StatusUsuario.ATIVO;
     }
 }
