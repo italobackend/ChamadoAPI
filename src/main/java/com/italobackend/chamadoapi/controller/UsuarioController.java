@@ -1,6 +1,6 @@
 package com.italobackend.chamadoapi.controller;
 
-import com.italobackend.chamadoapi.dto.UsuarioRequestDTO;
+import com.italobackend.chamadoapi.dto.request.UsuarioRequestDTO;
 import com.italobackend.chamadoapi.model.Usuario;
 import com.italobackend.chamadoapi.service.UsuarioService;
 import org.springframework.http.HttpStatus;

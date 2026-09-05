@@ -1,6 +1,6 @@
 package com.italobackend.chamadoapi.service;
 
-import com.italobackend.chamadoapi.dto.ChamadoRequestDTO;
+import com.italobackend.chamadoapi.dto.request.ChamadoRequestDTO;
 import com.italobackend.chamadoapi.exceptions.ChamadoNaoEncontradoException;
 import com.italobackend.chamadoapi.model.Chamado;
 import com.italobackend.chamadoapi.repository.ChamadoRepository;

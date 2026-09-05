@@ -1,4 +1,4 @@
-package com.italobackend.chamadoapi.dto;
+package com.italobackend.chamadoapi.dto.request;
 
 public record UsuarioRequestDTO(
         String nome,
