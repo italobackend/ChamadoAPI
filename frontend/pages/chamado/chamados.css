@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#sidebar {
+    background-color: #1e1e2d;
+    width: 240px;
+    min-height: 100vh;
+}
+
+#sidebar a {
+    color: white;
+    text-decoration: none;
+}
+
+#sidebar ul {
+    font-size: 16px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 16px;
+}
+
+#sidebar h2 {
+    color: white;
+    text-align: center;
+    padding: 12px 0 48px 0;
+}
+
+main {
+    flex: 1;
+    padding: 32px;
+}
+
+.breadcrumb {
+    padding-bottom: 24px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+.header-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-topo button {
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid #2563eb;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 4px;
+}
+
+.header-topo button:hover {
+    background: #0039bb;
+    border: 1px solid #0039bb;
+}
+
+.header-topo h1 {
+    padding: 16px;
+    font-size: 24px;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    margin: 16px 0;
+    padding: 16px;
+    border: 1.5px solid rgba(134, 134, 136, 0.22);
+    border-radius: 4px;
+}
+
+.tabs button {
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.tabs button:hover {
+    font-weight: bold;
+}
+
+.tab.ativo {
+    color: #2563eb;
+    border-bottom: 2px solid #2563eb;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 12px;
+    text-align: left;
+    border: 1.5px solid rgba(134, 134, 136, 0.22);
+}
+
+.status {
+    padding: 4px 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+
+.status-aberto {
+    color: #5884a2;
+    background-color: rgb(219, 233, 247);
+}
+
+.status-andamento {
+    color: #913f02;
+    background-color: #f1beab;
+}
+
+.status-concluido {
+    color: #254f2d;
+    background-color: #d7f8c8;
+}
