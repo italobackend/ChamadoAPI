@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="chamados.css">
+    <title>Lista de Chamados</title>
+</head>
+<body>
+<div id="sidebar-placeholder">
+
+</div>
+
+<main>
+    <header>
+        <nav class="breadcrumb">
+            <a href="inicio.html">Início</a> > Chamados
+        </nav>
+
+        <div class="header-topo">
+            <div>
+                <h1>Lista de chamados</h1>
+            </div>
+            <button>+ Abrir chamado</button>
+        </div>
+    </header>
+
+    <div class="tabs">
+        <button class="tab ativo">Todos (12)</button>
+        <button class="tab">Abertos (4)</button>
+        <button class="tab">Em andamento (5)</button>
+        <button class="tab">Resolvidos (3)</button>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Usuário</th>
+            <th>Tipo</th>
+            <th>Status</th>
+            <th>Criado em</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Internet não funciona</td>
+            <td>Yuri Custódio</td>
+            <td>Rede</td>
+            <td><span class="status status-aberto">Aberto</span></td>
+            <td>21/09/2026 20:56</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Programa falhando</td>
+            <td>Robert</td>
+            <td>Excel</td>
+            <td><span class="status status-andamento">Em andamento</span></td>
+            <td>20/09/2026 19:54</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Computador formatação</td>
+            <td>Rodrigo</td>
+            <td>Manutenção</td>
+            <td><span class="status status-concluido">Concluído</span></td>
+            <td>19/09/2026 14:30</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>

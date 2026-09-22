@@ -1,5 +1,6 @@
 package com.italobackend.chamadoapi.model;
 
+import com.italobackend.chamadoapi.enums.StatusChamado;
 import com.italobackend.chamadoapi.enums.TipoChamado;
 import jakarta.persistence.*;
 
@@ -24,6 +25,10 @@ public class Chamado {
     @Column(name = "tipo_chamado", nullable = false, length = 100)
     private TipoChamado tipoChamado;
 
+    @Enumerated(EnumType.STRING)
+    @Column
+    private StatusChamado status;
+
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;
 
@@ -34,6 +39,7 @@ public class Chamado {
         this.descricao = descricao;
         this.usuario = usuario;
         this.tipoChamado = tipoChamado;
+        this.status = StatusChamado.ABERTO;
         this.criadoEm = LocalDateTime.now();
     }
 
@@ -71,5 +77,13 @@ public class Chamado {
 
     public void setCriadoEm(LocalDateTime criadoEm) {
         this.criadoEm = criadoEm;
+    }
+
+    public StatusChamado getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusChamado status) {
+        this.status = status;
     }
 }
