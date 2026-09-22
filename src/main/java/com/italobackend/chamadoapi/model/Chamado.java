@@ -26,7 +26,7 @@ public class Chamado {
     private TipoChamado tipoChamado;
 
     @Enumerated(EnumType.STRING)
-    @Column
+    @Column(name = "status_chamado", nullable = false, length = 100)
     private StatusChamado status;
 
     @Column(name = "criado_em", nullable = false)
