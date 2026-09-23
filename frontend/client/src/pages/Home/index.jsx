@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom"
 
-import './style.css'
+import './index.css'
 import '../../index.css'
 
 function Login() {
@@ -44,26 +44,28 @@ function Login() {
     }
 
     return (
-        <div className="form-container">
-            <h1>Faça seu log-in</h1>
-            <form className="login-form" onSubmit={handleLogin}>
-                <input type="text"
-                       placeholder="Seu usuário"
-                       name={"login"}
-                       value={login}
-                       onChange={(e) => setLogin(e.target.value)}
-                />
-                <input type="password"
-                       placeholder="Sua senha"
-                       name={"senha"}
-                       value={senha}
-                       onChange={(e) => setSenha(e.target.value)}
-                />
-                <button type={"submit"}
-                        className={"btn-login"} disabled={loading}>{loading ? 'Entrando...' : 'Entrar'}
-                </button>
-                {error && <p className={"erro-login"}>{error}</p>}
-            </form>
+        <div className="login-container">
+            <div className="form-container">
+                <h1>Faça seu log-in</h1>
+                <form className="login-form" onSubmit={handleLogin}>
+                    <input type="text"
+                           placeholder="Seu usuário"
+                           name={"login"}
+                           value={login}
+                           onChange={(e) => setLogin(e.target.value)}
+                    />
+                    <input type="password"
+                           placeholder="Sua senha"
+                           name={"senha"}
+                           value={senha}
+                           onChange={(e) => setSenha(e.target.value)}
+                    />
+                    <button type={"submit"}
+                            className={"btn-login"} disabled={loading}>{loading ? 'Entrando...' : 'Entrar'}
+                    </button>
+                    {error && <p className={"erro-login"}>{error}</p>}
+                </form>
+            </div>
         </div>
     )
 }

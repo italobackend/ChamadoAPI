@@ -1,0 +1,18 @@
+.layout {
+    display: flex;
+}
+
+.content {
+    height: 79px;
+    width: 100%;
+    display: flex;
+    padding-left: 18px;
+    align-items: center;
+    color: white;
+    background: #1a1728;
+}
+
+.content h1 {
+    font-size: 20px;
+}
+

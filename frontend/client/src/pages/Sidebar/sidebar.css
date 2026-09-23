@@ -1,27 +1,23 @@
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    max-width: 360px;
+    width: 240px;
     height: 100vh;
+    flex-shrink: 0;
     background: #1a1728;
 }
 
 .sidebar h2 {
     display: flex;
     justify-content: center;
-    padding-top: 18px;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding: 18px;
     color: #ffffff;
-    font-size: 36px;
-    border-bottom: 1px solid #ffffff;
+    font-size: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sidebar nav {
     padding: 18px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     gap: 18px;
 }
