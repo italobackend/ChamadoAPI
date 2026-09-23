@@ -1,15 +1,21 @@
 import {useState} from "react";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
 
-import './style.css'
 import '../../index.css'
-import '../Sidebar/sidebar.jsx'
-import Sidebar from "../Sidebar/sidebar.jsx";
+import '../Sidebar/sidebar.css'
+import '../Header/header.css'
+import Sidebar from "../Sidebar/sidebar.jsx"
+import Header from "../Header/header.jsx";
 
 function Dashboard() {
     return (
-        <Sidebar/>
+        <div className="layout">
+            <Sidebar/>
+            <main className={"content"}>
+                <Header titulo="Dashboard"/>
+            </main>
+        </div>
     )
 }
 
-export default Dashboard
+export default Dashboard;
