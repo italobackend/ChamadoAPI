@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom"
 import './style.css'
 import '../../index.css'
 
-async function Login() {
+function Login() {
 
     const [login, setLogin] = useState('')
     const [senha, setSenha] = useState('')
@@ -18,7 +18,7 @@ async function Login() {
         setError('')
 
         try {
-            const resposta = await fetch('http://localhost:8080/api/auth/login', {
+            const resposta = await fetch('http://localhost:7071/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ async function Login() {
     return (
         <div className="form-container">
             <h1>Faça seu log-in</h1>
-            <form className="login-form">
+            <form className="login-form" onSubmit={handleLogin}>
                 <input type="text"
                        placeholder="Seu usuário"
                        name={"login"}
