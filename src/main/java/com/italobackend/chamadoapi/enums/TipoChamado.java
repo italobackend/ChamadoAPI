@@ -2,9 +2,9 @@ package com.italobackend.chamadoapi.enums;
 
 public enum TipoChamado {
     INSTALACAO("Instalação"),
-    MANUTENCAO_SOFTWARE("Manutenção de software"),
-    MANUTENCAO_DISPOSITIVO("Manutenção de dispositivo"),
-    REDE("Manutenção de rede");
+    MANUTENCAO_SOFTWARE("Software"),
+    MANUTENCAO_DISPOSITIVO("Dispositivo"),
+    REDE("Rede");
 
     private final String descricao;
 
