@@ -1,12 +1,13 @@
 .layout {
     display: flex;
-    padding-left: 18px;
+
 }
 
 .header {
     display: flex;
     height: 36px;
     align-items: center;
+    padding-left: 18px;
 }
 
 .header h1 {
