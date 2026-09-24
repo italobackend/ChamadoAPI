@@ -6,6 +6,7 @@ import com.italobackend.chamadoapi.model.Chamado;
 import com.italobackend.chamadoapi.service.ChamadoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +22,9 @@ public class ChamadoController {
     }
 
     @PostMapping
-    public ResponseEntity<Chamado> novoChamado(@RequestBody ChamadoRequestDTO dto) {
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<ChamadoResponseDTO> novoChamado(@RequestBody ChamadoRequestDTO dto, Authentication authentication) {
+        Chamado novoChamado = chamadoService.novoChamado(dto, authentication.getName());
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ChamadoResponseDTO(novoChamado));
     }
 
     @GetMapping

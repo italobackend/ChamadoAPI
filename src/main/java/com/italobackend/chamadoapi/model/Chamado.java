@@ -3,6 +3,7 @@ package com.italobackend.chamadoapi.model;
 import com.italobackend.chamadoapi.enums.StatusChamado;
 import com.italobackend.chamadoapi.enums.TipoChamado;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -30,6 +31,7 @@ public class Chamado {
     private StatusChamado status;
 
     @Column(name = "criado_em", nullable = false)
+    @CreationTimestamp
     private LocalDateTime criadoEm;
 
     public Chamado() {
