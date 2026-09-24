@@ -8,9 +8,9 @@
 .sidebar h2 {
     display: flex;
     justify-content: center;
-    padding: 18px;
+    padding: 12px;
     color: #ffffff;
-    font-size: 28px;
+    font-size: 26px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -19,7 +19,7 @@
     padding: 18px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 4px;
 }
 
 .sidebar a {
@@ -27,7 +27,7 @@
     text-decoration: none;
     font-size: 14px;
     transition: 0.2s;
-    padding: 8px;
+    padding: 4px;
 }
 
 .sidebar a:hover {

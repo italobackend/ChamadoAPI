@@ -1,6 +1,7 @@
 package com.italobackend.chamadoapi.controller;
 
 import com.italobackend.chamadoapi.dto.request.ChamadoRequestDTO;
+import com.italobackend.chamadoapi.dto.response.ChamadoResponseDTO;
 import com.italobackend.chamadoapi.model.Chamado;
 import com.italobackend.chamadoapi.service.ChamadoService;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class ChamadoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Chamado>> listarChamados() {
+    public ResponseEntity<List<ChamadoResponseDTO>> listarChamados() {
         return ResponseEntity.ok().body(chamadoService.listarChamados());
     }
 

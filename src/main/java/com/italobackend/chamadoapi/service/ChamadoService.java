@@ -1,10 +1,12 @@
 package com.italobackend.chamadoapi.service;
 
 import com.italobackend.chamadoapi.dto.request.ChamadoRequestDTO;
+import com.italobackend.chamadoapi.dto.response.ChamadoResponseDTO;
 import com.italobackend.chamadoapi.exceptions.ChamadoNaoEncontradoException;
 import com.italobackend.chamadoapi.model.Chamado;
 import com.italobackend.chamadoapi.repository.ChamadoRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,8 +27,14 @@ public class ChamadoService {
         return chamadoRepository.save(novoChamado);
     }
 
-    public List<Chamado> listarChamados() {
-        return chamadoRepository.findAll();
+
+    @Transactional(readOnly = true)
+    public List<ChamadoResponseDTO> listarChamados() {
+
+        return chamadoRepository.findAll()
+                .stream()
+                .map(ChamadoResponseDTO::new)
+                .toList();
     }
 
     public void deletarChamado(Long id) {

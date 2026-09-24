@@ -13,6 +13,7 @@ function Dashboard() {
             <Sidebar/>
             <main className={"content"}>
                 <Header titulo="Dashboard"/>
+                <Header descricao={"Acompanhe seu desempenho"}/>
             </main>
         </div>
     )

@@ -13,6 +13,7 @@ function Usuarios() {
             <Sidebar/>
             <main className={"content"}>
                 <Header titulo="Usuários"/>
+                <Header descricao={"Gerencie aqui seus usuários"}/>
             </main>
         </div>
     )

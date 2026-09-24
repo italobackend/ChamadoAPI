@@ -14,6 +14,7 @@ function Configuracoes() {
             <Sidebar/>
             <main className={"content"}>
                 <Header titulo="Configurações"/>
+                <Header descricao={"Defina configurações nesta tela"}/>
             </main>
         </div>
     )
