@@ -8,6 +8,9 @@ import '../Header/header.css'
 import Sidebar from '../Sidebar/sidebar.jsx'
 import Header from '../Header/header.jsx'
 
+
+const colunas = ['Em aberto', 'Em andamento', 'Conluído', 'Arquivado']
+
 function Chamados() {
 
     const [chamados, setChamados] = useState([])
@@ -67,10 +70,13 @@ function Chamados() {
             setTipoChamado('')
             setCriadoEm(Date.now)
             listarChamados()
+        } else if (tipoChamado === '') {
+            alert("É preciso selecionar um tipo de chamado para continuar")
         } else {
             alert("Erro ao criar chamado")
         }
     }
+
 
     return (
         <div className={"layout"}>
@@ -82,68 +88,62 @@ function Chamados() {
                     <button className={"btn-novo"} onClick={() => setModalAberto(true)}>
                         Novo chamado
                     </button>
-                    <table className={"tabela"}>
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Descrição</th>
-                            <th>Solicitante</th>
-                            <th>Tipo</th>
-                            <th>Status</th>
-                            <th>Criado em</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {chamados.map((chamado) => (
-                            <tr key={chamado.id}>
-                                <td>{chamado.id}</td>
-                                <td>{chamado.descricao}</td>
-                                <td>{chamado.usuario}</td>
-                                <td>{chamado.tipoChamado}</td>
-                                <td>{chamado.status}</td>
-                                <td>{formatarData(chamado.criadoEm)}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
-                </div>
-            </main>
 
-            {modalAberto && (
-                <div className={"modal-fundo"}>
-                    <div className={"modal"}>
-                        <h2>Cadastre um novo chamado</h2>
-
-                        <form className={"modal-form"} onSubmit={handleCriar}>
-                            <textarea
-                                placeholder="Descreva o problema"
-                                value={descricao}
-                                onChange={e => setDescricao(e.target.value)}
-                            />
-
-                            <select
-                                value={tipoChamado}
-                                onChange={e => setTipoChamado(e.target.value)}
-                            >
-
-                                <option value="">Tipo de chamado</option>
-                                <option value="INSTALACAO">Instalação</option>
-                                <option value="MANUTENCAO_SOFTWARE">Software</option>
-                                <option value="MANUTENCAO_DISPOSITIVO">Dispositivo</option>
-                                <option value="REDE">Rede</option>
-                            </select>
-                            <div className={"modal-btn"}>
-                                <button type={"button"} onClick={e => setModalAberto(false)}>
-                                    Cancelar
-                                </button>
-                                <button type={"submit"}>
-                                    Criar
-                                </button>
-                            </div>
-                        </form>
+                    <div className={"kanban"}>
+                        <div className={"kanban-coluna"}>
+                            <h3>Em aberto</h3>
+                        </div>
+                        <div className={"kanban-coluna"}>
+                            <h3>Em andamento</h3>
+                        </div>
+                        <div className={"kanban-coluna"}>
+                            <h3>Concluído</h3>
+                        </div>
+                        <div className={"kanban-coluna"}>
+                            <h3>Arquivado</h3>
+                        </div>
                     </div>
+
                 </div>
-            )}
+
+                {modalAberto && (
+                    <div className={"modal-fundo"}>
+                        <div className={"modal"}>
+                            <h2>Cadastre um novo chamado</h2>
+
+                            <form className={"modal-form"} onSubmit={handleCriar}>
+                                <select
+                                    value={tipoChamado}
+                                    onChange={e => setTipoChamado(e.target.value)}
+                                    required
+                                >
+
+                                    <option value="">Tipo de chamado</option>
+                                    <option value="INSTALACAO">Instalação</option>
+                                    <option value="MANUTENCAO_SOFTWARE">Software</option>
+                                    <option value="MANUTENCAO_DISPOSITIVO">Dispositivo</option>
+                                    <option value="REDE">Rede</option>
+                                </select>
+
+                                <textarea
+                                    placeholder="Descreva aqui o problema ocorrido"
+                                    value={descricao}
+                                    onChange={e => setDescricao(e.target.value)}
+                                    required
+                                />
+                                <div className={"modal-btn"}>
+                                    <button type={"button"} onClick={e => setModalAberto(false)}>
+                                        Cancelar
+                                    </button>
+                                    <button type={"submit"}>
+                                        Abrir chamado
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                )}
+            </main>
         </div>
     )
 }
