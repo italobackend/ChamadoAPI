@@ -108,8 +108,15 @@ function Chamados() {
                                     .filter((chamado) => chamado.statusCodigo === coluna.codigo)
                                     .map((chamado) => (
                                         <div className={"kanban-item"} key={chamado.id}>
-                                            <span>#{chamado.id}</span>
-                                            <span>{chamado.tipoChamado}</span>
+                                            <div className={"card-avatar"}>IF</div>
+                                            <div className={"card-conteudo"}>
+                                                <span className={"card-usuario"}>{chamado.usuario}</span>
+                                                <p className={"card-texto"}>{chamado.descricao}</p>
+                                                <div className={"card-rodape"}>
+                                                    <span className={"card-etiqueta"}>{chamado.tipoChamado}</span>
+                                                    <span className={"card-id"}>#{chamado.id}</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     ))}
                             </div>
