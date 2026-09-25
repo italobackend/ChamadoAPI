@@ -1,6 +1,7 @@
 package com.italobackend.chamadoapi.service;
 
 import com.italobackend.chamadoapi.dto.request.ChamadoRequestDTO;
+import com.italobackend.chamadoapi.dto.request.StatusRequestDTO;
 import com.italobackend.chamadoapi.dto.response.ChamadoResponseDTO;
 import com.italobackend.chamadoapi.enums.StatusChamado;
 import com.italobackend.chamadoapi.exceptions.ChamadoNaoEncontradoException;
@@ -12,7 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ChamadoService {
@@ -56,5 +60,26 @@ public class ChamadoService {
 
         chamado.setDescricao(dto.descricao());
         return chamadoRepository.save(chamado);
+    }
+
+    @Transactional
+    public void alterarStatusChamado(Long id, StatusRequestDTO dto) {
+
+        Chamado chamado = chamadoRepository.findById(id)
+                .orElseThrow(() -> new ChamadoNaoEncontradoException("Chamado não encontrado"));
+
+        chamado.setStatus(dto.status());
+    }
+
+    @Transactional(readOnly = true)
+    public Map<String, Long> contarTodosPorStatus() {
+        Map<String, Long> contagem = new LinkedHashMap<>();
+
+        for (StatusChamado statusChamado : StatusChamado.values()) {
+            contagem.put(statusChamado.getDescricao(), chamadoRepository.countByStatus(statusChamado));
+        }
+
+        return contagem;
+
     }
 }

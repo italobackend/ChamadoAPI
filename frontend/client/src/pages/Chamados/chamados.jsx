@@ -8,9 +8,6 @@ import '../Header/header.css'
 import Sidebar from '../Sidebar/sidebar.jsx'
 import Header from '../Header/header.jsx'
 
-
-const colunas = ['Em aberto', 'Em andamento', 'Concluído', 'Arquivado']
-
 function Chamados() {
 
     const [chamados, setChamados] = useState([])
@@ -18,7 +15,9 @@ function Chamados() {
     const [descricao, setDescricao] = useState('')
     const [solicitante, setSolicitante] = useState('')
     const [tipoChamado, setTipoChamado] = useState('')
-    const [criadoEm, setCriadoEm] = useState(Date.now)
+    const [criadoEm, setCriadoEm] = useState(Date.now())
+    const [colunas, setColunas] = useState([])
+    const [contagem, setContagem] = useState({})
 
     const formatarData = (texto) => {
         return new Date(texto).toLocaleString('pt-BR', {
@@ -39,13 +38,36 @@ function Chamados() {
             .then(dados => setChamados(dados))
     }
 
+    const listarStatus = () => {
+        fetch('http://localhost:7071/api/chamados/status', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(resposta => resposta.json())
+            .then(dados => setColunas(dados))
+    }
+
+
     useEffect(() => {
         listarChamados()
+        listarStatus()
+    }, [])
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+
+        fetch('http://localhost:7071/api/chamados/status', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(resposta => resposta.json())
+            .then(dados => setContagem(dados))
     }, [])
 
 
     const handleCriar = async (evento) => {
-        console.log("o handle foi chamado")
         evento.preventDefault()
 
         const resposta = await fetch(`http://localhost:7071/api/chamados`, {
@@ -78,20 +100,21 @@ function Chamados() {
 
                 <div className={"kanban"}>
                     {colunas.map((coluna) => (
-                        <div className="kanban-coluna" key={coluna}>
-                            <h3>{coluna}</h3>
+                        <div className="kanban-coluna" key={coluna.codigo}>
+                            <h3>{coluna.descricao}</h3>
 
                             <div className={"kanban-lista"}>
                                 {chamados
-                                    .filter((chamado) => chamado.status === coluna)
+                                    .filter((chamado) => chamado.statusCodigo === coluna.codigo)
                                     .map((chamado) => (
-
                                         <div className={"kanban-item"} key={chamado.id}>
                                             <span>#{chamado.id}</span>
                                             <span>{chamado.tipoChamado}</span>
-                                        </div>))}
+                                        </div>
+                                    ))}
                             </div>
-                        </div>))}
+                        </div>
+                    ))}
 
                 </div>
 

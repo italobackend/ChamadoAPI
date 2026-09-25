@@ -35,6 +35,7 @@ function Login() {
             }
             localStorage.setItem('token', dados.token);
             alert("Login direcionado com sucesso!")
+            console.log(dados.token);
             navigate('/dashboard');
         } catch (err) {
             setError(err.message)

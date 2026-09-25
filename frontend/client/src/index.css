@@ -6,7 +6,7 @@ CSS GLOBAL, É IMPORTADO EM TODAS AS PAGES JSX
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", Sans Serif Collection;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {

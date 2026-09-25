@@ -9,7 +9,8 @@ public record ChamadoResponseDTO(
         String usuario,
         String tipoChamado,
         String status,
-        LocalDateTime criadoEm
+        LocalDateTime criadoEm,
+        String statusCodigo
 ) {
     public ChamadoResponseDTO(Chamado chamado) {
         this(
@@ -18,7 +19,8 @@ public record ChamadoResponseDTO(
                 chamado.getUsuario().getNome(),
                 chamado.getTipoChamado().getDescricao(),
                 chamado.getStatus().getDescricao(),
-                chamado.getCriadoEm()
+                chamado.getCriadoEm(),
+                chamado.getStatus().name()
         );
     }
 }
