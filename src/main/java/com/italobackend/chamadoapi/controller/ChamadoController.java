@@ -55,13 +55,6 @@ public class ChamadoController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/status")
-    public List<OpcaoDTO> listarStatus() {
-        return Arrays.stream(StatusChamado.values())
-                .map(status -> new OpcaoDTO(status.name(), status.getDescricao()))
-                .toList();
-    }
-
     @GetMapping("/contagem")
     public Map<String, Long> contarPorStatus() {
         return chamadoService.contarTodosPorStatus();

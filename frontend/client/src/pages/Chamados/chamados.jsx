@@ -17,6 +17,7 @@ function Chamados() {
     const [tipoChamado, setTipoChamado] = useState('')
     const [criadoEm, setCriadoEm] = useState(Date.now())
     const [colunas, setColunas] = useState([])
+    const [status, setStatus] = useState({})
     const [contagem, setContagem] = useState({})
 
     const formatarData = (texto) => {
@@ -48,24 +49,22 @@ function Chamados() {
             .then(dados => setColunas(dados))
     }
 
-
-    useEffect(() => {
-        listarChamados()
-        listarStatus()
-    }, [])
-
-    useEffect(() => {
-        const token = localStorage.getItem('token')
-
-        fetch('http://localhost:7071/api/chamados/status', {
+    const contagemStatus = () => {
+        fetch('http://localhost:7071/api/chamados/contagem', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
             .then(resposta => resposta.json())
             .then(dados => setContagem(dados))
-    }, [])
+    }
 
+
+    useEffect(() => {
+        listarChamados()
+        listarStatus()
+        contagemStatus()
+    }, [])
 
     const handleCriar = async (evento) => {
         evento.preventDefault()
@@ -83,6 +82,7 @@ function Chamados() {
             setTipoChamado('')
             setCriadoEm(Date.now())
             listarChamados()
+            contagemStatus()
         } else {
             alert("Erro ao criar chamado")
         }
@@ -101,7 +101,7 @@ function Chamados() {
                 <div className={"kanban"}>
                     {colunas.map((coluna) => (
                         <div className="kanban-coluna" key={coluna.codigo}>
-                            <h3>{coluna.descricao}</h3>
+                            <h3>{coluna.descricao} ({contagem[coluna.descricao] ?? 0})</h3>
 
                             <div className={"kanban-lista"}>
                                 {chamados
